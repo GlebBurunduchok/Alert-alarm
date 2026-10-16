@@ -1,0 +1,43 @@
+{
+  "name": "tykhyi-ranok-api",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*"
+    ]
+  },
+  "vars": {
+    "ALLOWED_ORIGIN": "https://glebburunduchok.github.io"
+  },
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "ALERTS_COORDINATOR",
+        "class_name": "AlertsCoordinator"
+      },
+      {
+        "name": "ALARM_DEVICES",
+        "class_name": "AlarmDevice"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "AlertsCoordinator"
+      ]
+    },
+    {
+      "tag": "v2",
+      "new_sqlite_classes": [
+        "AlarmDevice"
+      ]
+    }
+  ],
+  "preview_urls": false
+}
